@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingTop="15dip"
+    android:paddingLeft="15dip"
+	android:paddingRight="15dip"
+	android:paddingBottom="15dip"
+	android:background="@color/background"
+    >
+        <!--Put here ads instead of ImageView-->
+		<ImageView
+			android:id="@+id/imagen"
+            android:src = "@drawable/textlogo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+			android:layout_alignParentLeft="true"
+            />
+            
+		<ScrollView
+			android:orientation="vertical"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"	   		
+	   		android:layout_alignParentTop="true"
+	        android:layout_alignParentLeft="true"
+			android:layout_above="@+id/imagen"
+	   		>
+		    <TableLayout
+		    	android:id="@+id/gridView"
+		    	android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+                android:background="@color/button_background"
+				android:stretchColumns="*">
+			</TableLayout>
+		</ScrollView>
+</RelativeLayout>
+
+
+
+

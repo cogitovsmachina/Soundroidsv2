@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/icon"
+        android:icon="@drawable/icon"
+        android:title="FAQ" />
+      <item android:id="@+id/text"
+      	android:icon="@drawable/icon"
+        android:title="Credits" /> 
+    <item android:id="@+id/icontext"
+        android:title="Donate"
+        android:icon="@drawable/icon" />
+</menu>
