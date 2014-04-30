@@ -10,9 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.view.Menu;
-import android.view.MenuInflater;
-
+import com.google.android.gms.ads.*;
 import org.androidtitlan.soniditos.R;
 
 
@@ -40,8 +38,53 @@ public class HomeActivity extends ActionBarActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        setupActionBar();
+        setupAdView();
+        displayButtons();
+
+
+
+    }
+
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mediaPlayer != null) stopSound();
+    }
+
+    private void playSound(int i, int sonido) {
+        if (lastItem == i && mediaPlayer != null && mediaPlayer.isPlaying())    //si el boton anterior y al actual son iguales
+            stopSound();
+        else {                //si el boton anterior y al actual son diferentes
+            stopSound();
+            mediaPlayer = MediaPlayer.create(getApplicationContext(), sonido);
+            mediaPlayer.start();
+        }
+    }
+
+    private void stopSound() {
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+    }
+
+
+    private void setupAdView() {
+        AdView adView = (AdView)this.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+    }
+
+    private void setupActionBar() {
         getSupportActionBar().setTitle("");
         getSupportActionBar().setIcon(R.drawable.logo_soundroids);
+    }
+
+    private void displayButtons() {
         NumBotones = audio.length;
         boton = new Button[NumBotones];
         tableLayout = (TableLayout) findViewById(R.id.gridView);
@@ -74,38 +117,6 @@ public class HomeActivity extends ActionBarActivity {
         }
 
         if ((i + 1) % 3 != 0) tableLayout.addView(row);
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        if (mediaPlayer != null) stopSound();
-    }
-
-    private void playSound(int i, int sonido) {
-        if (lastItem == i && mediaPlayer != null && mediaPlayer.isPlaying())    //si el boton anterior y al actual son iguales
-            stopSound();
-        else {                //si el boton anterior y al actual son diferentes
-            stopSound();
-            mediaPlayer = MediaPlayer.create(getApplicationContext(), sonido);
-            mediaPlayer.start();
-        }
-    }
-
-    private void stopSound() {
-        if (mediaPlayer != null) {
-            mediaPlayer.stop();
-            mediaPlayer.release();
-            mediaPlayer = null;
-        }
-    }
-
-    /*Creando el Option Menu*/
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-        return true;
     }
 
 }

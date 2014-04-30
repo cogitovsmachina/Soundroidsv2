@@ -1,40 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:paddingTop="15dip"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:paddingBottom="15dip"
     android:paddingLeft="15dip"
-	android:paddingRight="15dip"
-	android:paddingBottom="15dip"
-	android:background="@color/background"
-    >
-        <!--Put here ads instead of ImageView-->
-		<ImageView
-			android:id="@+id/imagen"
-            android:src = "@drawable/textlogo"
+    android:paddingRight="15dip"
+    android:paddingTop="15dip">
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-9756726447441686/6918191268"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/adView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+        <TableLayout
+            android:id="@+id/gridView"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-			android:layout_alignParentLeft="true"
-            />
-            
-		<ScrollView
-			android:orientation="vertical"
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"	   		
-	   		android:layout_alignParentTop="true"
-	        android:layout_alignParentLeft="true"
-			android:layout_above="@+id/imagen"
-	   		>
-		    <TableLayout
-		    	android:id="@+id/gridView"
-		    	android:layout_width="fill_parent"
-				android:layout_height="fill_parent"
-                android:background="@color/button_background"
-				android:stretchColumns="*">
-			</TableLayout>
-		</ScrollView>
+            android:layout_height="fill_parent"
+            android:background="@color/button_background"
+            android:stretchColumns="*" />
+    </ScrollView>
 </RelativeLayout>
 
 
