@@ -1,7 +1,5 @@
 package org.androidtitlan.soniditos.org.androidtitlan.soniditos.activity;
 
-import java.util.ArrayList;
-
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -19,7 +17,7 @@ import org.androidtitlan.soniditos.R;
 public class HomeActivity extends ActionBarActivity {
     private Integer NumBotones;
     private TableLayout tableLayout;
-    ArrayList<View> rowList = new ArrayList<View>();
+    //ArrayList<View> rowList = new ArrayList<View>();
     private Button boton[];
     private Integer audio[] = {R.raw.grillos, R.raw.drama, R.raw.chewbacca,
             R.raw.nooo, R.raw.doh, R.raw.jaja,
@@ -92,7 +90,6 @@ public class HomeActivity extends ActionBarActivity {
         int i;
         //TODO: Change this implementation into a GridLayout instead.
         for (i = 0; i < NumBotones; i++) {
-            //Incializando todos los botones
             boton[i] = new Button(this);
             boton[i].setWidth(200);
             boton[i].setHeight(200);
@@ -101,6 +98,7 @@ public class HomeActivity extends ActionBarActivity {
             boton[i].setText(getResources().getStringArray(R.array.nombre_botones)[i]);
 
             final int tmp = i;
+            //TODO: Add Nine-old-Androids library
             anim = new ScaleAnimation(1, 0.6f, 1, 0.6f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.6f);
             anim.setDuration(300);
             boton[i].setOnClickListener(new OnClickListener() {
