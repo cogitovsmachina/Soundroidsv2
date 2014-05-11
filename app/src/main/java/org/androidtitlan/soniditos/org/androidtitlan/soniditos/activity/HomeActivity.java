@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -33,6 +35,7 @@ public class HomeActivity extends ActionBarActivity {
 
     private MediaPlayer mediaPlayer = null;
     Integer lastItem;
+    private ScaleAnimation anim;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,11 +44,7 @@ public class HomeActivity extends ActionBarActivity {
         setupActionBar();
         setupAdView();
         displayButtons();
-
-
-
     }
-
 
 
     @Override
@@ -102,10 +101,13 @@ public class HomeActivity extends ActionBarActivity {
             boton[i].setText(getResources().getStringArray(R.array.nombre_botones)[i]);
 
             final int tmp = i;
+            anim = new ScaleAnimation(1, 0.6f, 1, 0.6f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.6f);
+            anim.setDuration(300);
             boton[i].setOnClickListener(new OnClickListener() {
                 public void onClick(View v) {
                     playSound(tmp, audio[tmp]);
                     lastItem = tmp;
+                    v.startAnimation(anim);
                 }
             });
             row.addView(boton[i]);
